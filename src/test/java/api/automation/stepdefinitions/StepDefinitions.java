@@ -58,5 +58,33 @@ public class StepDefinitions extends Utility{
     public void verify_api_response_against_schema(String schemaFileName) throws Exception {
         genericMethods.validateWithSchema(response, schemaFileName);
     }
+    
+    @Given("Register User API with {string} and {string}")
+    public void create_user_api_with_and(String email, String password) throws IOException {
+        res = given().spec(registerUserRequestSpecification(email,password));
+    }
+
+    @When("user calls {string} with Post Http Request")
+    public void user_calls_with_post_http_request(String resource) {
+        if(resource.equals("RegisterUserAPI")) {
+            APIResources resourceAPI = APIResources.valueOf(resource);
+            String pathURL = resourceAPI.getResource();
+            response = res.when().post(pathURL);
+        }else if(resource.equals("LoginAPI")) {
+            APIResources resourceAPI = APIResources.valueOf(resource);
+            String pathURL = resourceAPI.getResource();
+            response = res.when().post(pathURL);
+        }
+    }
+    
+    @Given("Login API with {string} and {string}")
+    public void login_api_with_and(String email, String password) throws IOException {
+        res = given().spec(loginUserRequestSpecification(email, password));
+    }
+
+    @Then("verify if login is successful and token {string} is returned")
+    public void verify_if_login_is_successful_and_token_is_returned(String string) {
+        
+    }
 
 }

@@ -1,5 +1,6 @@
 package api.automation.utils;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,6 +19,7 @@ public class Utility {
     
     public static RequestSpecification req;
     public static ResponseSpecification responsespec;
+    private TestDataBuilder testDataBuilder;
     
     public static String getGlobalProperties(String key) throws IOException {
         FileReader reader = new FileReader("GlobalSettings.properties");
@@ -28,7 +30,7 @@ public class Utility {
     
     public RequestSpecification listUsersRequestSpecifications() throws IOException {
         if(req == null) {
-            PrintStream log = new PrintStream(new FileOutputStream("Logging.txt"));
+            PrintStream log = new PrintStream(new FileOutputStream("target//logs//listUsersLogs.txt"));
             req = new RequestSpecBuilder().setBaseUri(getGlobalProperties("reqResBaseUrl"))
                     .addHeader("accept", "application/json")
                     .addFilter(RequestLoggingFilter.logRequestTo(log))
@@ -36,6 +38,28 @@ public class Utility {
                     .setContentType(ContentType.JSON).build();
             return req;
         }
+        return req;
+    }
+    
+    public RequestSpecification registerUserRequestSpecification(String email, String password) throws IOException {
+        PrintStream log = new PrintStream(new FileOutputStream("target//logs//registerUserLogs.txt"));
+        testDataBuilder = new TestDataBuilder();
+        req = new RequestSpecBuilder().setBaseUri(getGlobalProperties("reqResBaseUrl"))
+                .addHeader("accept", "application/json")
+                .addFilter(RequestLoggingFilter.logRequestTo(log))
+                .addFilter(ResponseLoggingFilter.logResponseTo(log))
+                .setContentType(ContentType.JSON).setBody(testDataBuilder.registerUserRequestPayload(email, password)).build();
+        return req;
+    }
+    
+    public RequestSpecification loginUserRequestSpecification(String email, String password) throws IOException {
+        PrintStream log = new PrintStream(new FileOutputStream("target//logs//loginUserLogs.txt"));
+        testDataBuilder = new TestDataBuilder();
+        req = new RequestSpecBuilder().setBaseUri(getGlobalProperties("reqResBaseUrl"))
+                .addHeader("accept", "application/json")
+                .addFilter(RequestLoggingFilter.logRequestTo(log))
+                .addFilter(ResponseLoggingFilter.logResponseTo(log))
+                .setContentType(ContentType.JSON).setBody(testDataBuilder.loginUserRequestBody(email, password)).build();
         return req;
     }
     
