@@ -60,7 +60,7 @@ public class StepDefinitions extends Utility{
     }
     
     @Given("Register User API with {string} and {string}")
-    public void create_user_api_with_and(String email, String password) throws IOException {
+    public void register_user_api_with_and(String email, String password) throws IOException {
         res = given().spec(registerUserRequestSpecification(email,password));
     }
 
@@ -71,6 +71,10 @@ public class StepDefinitions extends Utility{
             String pathURL = resourceAPI.getResource();
             response = res.when().post(pathURL);
         }else if(resource.equals("LoginAPI")) {
+            APIResources resourceAPI = APIResources.valueOf(resource);
+            String pathURL = resourceAPI.getResource();
+            response = res.when().post(pathURL);
+        }else if(resource.equals("CreateUserAPI")) {
             APIResources resourceAPI = APIResources.valueOf(resource);
             String pathURL = resourceAPI.getResource();
             response = res.when().post(pathURL);
@@ -85,6 +89,11 @@ public class StepDefinitions extends Utility{
     @Then("verify if login is successful and token {string} is returned")
     public void verify_if_login_is_successful_and_token_is_returned(String string) {
         
+    }
+    
+    @Given("Create User API with {string} and {string}")
+    public void create_user_api_with_and(String name, String job) throws IOException {
+        res = given().spec(createUserRequestSpecification(name,job));
     }
 
 }

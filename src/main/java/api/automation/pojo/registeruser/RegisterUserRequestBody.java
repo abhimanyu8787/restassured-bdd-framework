@@ -1,4 +1,4 @@
-package api.automation.pojo.createuser;
+package api.automation.pojo.registeruser;
 
 public class RegisterUserRequestBody {
     

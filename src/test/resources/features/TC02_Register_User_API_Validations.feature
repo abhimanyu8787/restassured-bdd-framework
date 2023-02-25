@@ -8,7 +8,7 @@ Feature: Validate Register User API
     Given Register User API with "<email>" and "<password>"
     When user calls "RegisterUserAPI" with Post Http Request
     Then verify if API returns with status code 200
-    And verify API response against "CreateUser200ResponseSchema" schema
+    And verify API response against "RegisterUser200ResponseSchema" schema
     
   Examples:
   |email							|password			|

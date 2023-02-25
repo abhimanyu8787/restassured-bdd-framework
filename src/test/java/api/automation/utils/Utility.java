@@ -63,6 +63,17 @@ public class Utility {
         return req;
     }
     
+    public RequestSpecification createUserRequestSpecification(String name, String job) throws IOException {
+        PrintStream log = new PrintStream(new FileOutputStream("target//logs//createUserLogs.txt"));
+        testDataBuilder = new TestDataBuilder();
+        req = new RequestSpecBuilder().setBaseUri(getGlobalProperties("reqResBaseUrl"))
+                .addHeader("accept", "application/json")
+                .addFilter(RequestLoggingFilter.logRequestTo(log))
+                .addFilter(ResponseLoggingFilter.logResponseTo(log))
+                .setContentType(ContentType.JSON).setBody(testDataBuilder.createUserRequestPayload(name, job)).build();
+        return req;
+    }
+    
     public ResponseSpecification listUsersResponseSpecification() {
         if(responsespec == null) {
             responsespec = new ResponseSpecBuilder().expectContentType(ContentType.JSON).build();
