@@ -9,6 +9,7 @@ Feature: Validate List Users API
     When user calls "ListUsersAPI" API with GET http request
     Then verify if API returns with status code 200
     And verify API response against "ListUsers200ResponseSchema" schema
+    And verify if all the emails in the response are unique
     
     Examples:
     |page	|perPage|
