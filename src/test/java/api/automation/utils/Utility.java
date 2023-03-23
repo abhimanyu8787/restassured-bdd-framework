@@ -30,7 +30,7 @@ public class Utility {
     
     public RequestSpecification listUsersRequestSpecifications() throws IOException {
         if(req == null) {
-            PrintStream log = new PrintStream(new FileOutputStream("target//logs//listUsersLogs.txt"));
+            PrintStream log = new PrintStream(new FileOutputStream("api-logs//listUsersLogs.txt"));
             req = new RequestSpecBuilder().setBaseUri(getGlobalProperties("reqResBaseUrl"))
                     .addHeader("accept", "application/json")
                     .addFilter(RequestLoggingFilter.logRequestTo(log))
@@ -42,7 +42,7 @@ public class Utility {
     }
     
     public RequestSpecification registerUserRequestSpecification(String email, String password) throws IOException {
-        PrintStream log = new PrintStream(new FileOutputStream("target//logs//registerUserLogs.txt"));
+        PrintStream log = new PrintStream(new FileOutputStream("api-logs//registerUserLogs.txt"));
         testDataBuilder = new TestDataBuilder();
         req = new RequestSpecBuilder().setBaseUri(getGlobalProperties("reqResBaseUrl"))
                 .addHeader("accept", "application/json")
@@ -53,7 +53,7 @@ public class Utility {
     }
     
     public RequestSpecification loginUserRequestSpecification(String email, String password) throws IOException {
-        PrintStream log = new PrintStream(new FileOutputStream("target//logs//loginUserLogs.txt"));
+        PrintStream log = new PrintStream(new FileOutputStream("api-logs//loginUserLogs.txt"));
         testDataBuilder = new TestDataBuilder();
         req = new RequestSpecBuilder().setBaseUri(getGlobalProperties("reqResBaseUrl"))
                 .addHeader("accept", "application/json")
@@ -64,7 +64,7 @@ public class Utility {
     }
     
     public RequestSpecification createUserRequestSpecification(String name, String job) throws IOException {
-        PrintStream log = new PrintStream(new FileOutputStream("target//logs//createUserLogs.txt"));
+        PrintStream log = new PrintStream(new FileOutputStream("api-logs//createUserLogs.txt"));
         testDataBuilder = new TestDataBuilder();
         req = new RequestSpecBuilder().setBaseUri(getGlobalProperties("reqResBaseUrl"))
                 .addHeader("accept", "application/json")
