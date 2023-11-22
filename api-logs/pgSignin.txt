@@ -1,0 +1,55 @@
+Request method:	POST
+Request URI:	https://test-standardautomation-hub.pg-test.com/api/auth
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		authority=test-standardautomation-hub.pg-test.com
+				accept=application/json, text/plain, */*
+				accept-language=en-US,en;q=0.9
+				hubidentifier=newhub926737103395
+				origin=https://test-standardautomation-hub.pg-test.com
+				referer=https://test-standardautomation-hub.pg-test.com/hub/newhub926737103395/auth/create-account
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "email": "clusteradmin@epxlvj6o.mailosaur.net",
+    "password": "Testing@123",
+    "method": 1,
+    "source": "standardSignup"
+}
+HTTP/1.1 200 OK
+Date: Wed, 22 Nov 2023 08:45:59 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+CF-Ray: 829fe635af652af9-DEL
+CF-Cache-Status: DYNAMIC
+Cache-Control: no-cache, no-store, must-revalidate
+ETag: W/"227-CDiEU4dnuG8otBxVQbI3R9m+0xw"
+Expires: Tue, 31 Mar 1981 05:00:00 GMT
+Last-Modified: Wed, 22 Nov 2023 08:45:58 GMT
+Set-Cookie: refreshToken=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoyNzMyNDQ1OSwiaXNBZG1pbiI6ZmFsc2UsImNsdXN0ZXIiOjEwNTIsImlzc3VlZEF0IjoiMjAyMy0xMS0yMlQwODo0NTo1OS42NzRaIiwiZXhwaXJlc0F0IjoiMjAyNC0wMi0yMFQwODo0NTo1OS42NzRaIiwidG9rZW5VdWlkIjoiOTU1YTUwMjktOWIzNi00MDY3LWE0MTItMmFkZDljNDk1ODQ3In0.LRvmn4MhcnWzzzTjlJueIxt6-P4CivFvNAx_7iESaSg; Path=/api/auth/token/; Expires=Tue, 20 Feb 2024 08:45:59 GMT; HttpOnly; Secure; SameSite=Strict
+Vary: Accept-Encoding
+Via: 1.1 google
+Pragma: no-cache
+Set-Cookie: sails.sid=s%3ArWF492aUpwkwg7epMwCASPu_mdThom7p.zJocbC%2FccQWltHsDWzyYYxCyjJd1cdkQI3xIv%2BAdeZY; Path=/; HttpOnly
+X-Content-Type-Options: nosniff
+x-response-origin: pg
+Server: cloudflare
+Content-Encoding: gzip
+
+{
+    "photoUrl": "https://s3.amazonaws.com/campuskudos-images/generic_avatar.jpg",
+    "firstName": "Cluster",
+    "lastName": "Admin",
+    "isAdmin": false,
+    "identifier": "clusteradmin",
+    "hasCluster": true,
+    "id": 27324459,
+    "found": true,
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoyNzMyNDQ1OSwiY2x1c3RlciI6MTA1MiwidmVyc2lvbiI6MSwiaXNzdWVkQXQiOiIyMDIzLTExLTIyVDA4OjQ1OjU5LjY3M1oiLCJleHBpcmVzQXQiOiIyMDIzLTExLTIyVDA5OjE1OjU5LjY3M1oiLCJ0b2tlblV1aWQiOiI2MjRlODdjNi1kOGI5LTQ1Y2ItYjA5ZS1iZmU1ZDExMzc1MDAiLCJzY29wZSI6WyJhdXRoIl19._HB2kA_i1plXfPmDHHE8BPNIfmHzL1oyadsuTNJBXZQ"
+}

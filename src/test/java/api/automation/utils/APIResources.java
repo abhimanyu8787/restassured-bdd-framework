@@ -13,6 +13,7 @@ public enum APIResources {
     PGSignup200ResponseSchema("src\\test\\resources\\jsonschema\\PGSignup200ResponseSchema.json"),
     PgSignupAPI("/api/auth/signup"),
     PgSignupAPIUSers("/api/users"),
+    PgSigninAPI("/api/auth"),
     PgLandingPage("/api/cluster/landing-page"),
     PgLandingPageSettings("/api/cluster/landing-page/1692");
     

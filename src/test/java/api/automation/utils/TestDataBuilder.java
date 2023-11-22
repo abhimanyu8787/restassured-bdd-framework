@@ -34,6 +34,11 @@ public class TestDataBuilder {
     	return signupBody;
     }
     
+    public SignupBody signinRequestPayload(String email, String password, String source) {
+    	signupBody = new SignupBody(1,email, password, source);
+    	return signupBody;
+    }
+    
     public SelectUsertype selectUsertypePayload(int hubId, String getUserObject, String signupStage, String isBackPressed, String userType) {
     	selectUsertype = new SelectUsertype(hubId, getUserObject, signupStage, isBackPressed, userType);
     	return selectUsertype;

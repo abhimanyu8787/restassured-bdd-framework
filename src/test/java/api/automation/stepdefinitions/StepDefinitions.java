@@ -89,6 +89,10 @@ public class StepDefinitions extends Utility{
         	APIResources resourceAPI = APIResources.valueOf(resource);
             String pathURL = resourceAPI.getResource();
             testContextSetup.response = res.when().post(pathURL);
+        }else if(resource.equals("PgSigninAPI")) {
+        	APIResources resourceAPI = APIResources.valueOf(resource);
+            String pathURL = resourceAPI.getResource();
+            testContextSetup.response = res.when().post(pathURL);
         }
         System.out.println(testContextSetup.response.asPrettyString());
     }
@@ -163,6 +167,22 @@ public class StepDefinitions extends Utility{
     @Then("verify the response of landing page template api")
     public void verify_the_response_of_landing_page_template_api() {
         LandingPageTemplate landingPageTemplate = testContextSetup.response.getBody().as(LandingPageTemplate.class);
+    }
+    
+    @Given("Signin as {string} on pg standard")
+    public void signin_as_x_user_on_pg_standard(String usertype) throws IOException {
+    	String email, pwd;
+    	if(usertype.equalsIgnoreCase("cluster admin")) {
+    		email = "clusteradmin@epxlvj6o.mailosaur.net";
+    		pwd = "Testing@123";
+    		res = given().spec(pgSigninAPIRequestSpec())
+            		.body(testDataBuilder.signinRequestPayload(email, pwd, "standardSignup"));
+    	}
+    }
+    
+    @When("modify {string} settings in landing page template payload")
+    public void modify_x_section_settings_in_landing_page_template_payload(String sectionName) {
+    	
     }
 
 }

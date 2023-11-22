@@ -104,6 +104,22 @@ public class Utility {
     	return req;
     }
     
+    public RequestSpecification pgSigninAPIRequestSpec() throws IOException {
+    	PrintStream log = new PrintStream(new FileOutputStream("api-logs//pgSignin.txt"));
+    	req = new RequestSpecBuilder().setBaseUri(getGlobalProperties("pgBaseUrl"))
+    			.addHeader("authority", "test-standardautomation-hub.pg-test.com")
+    			.addHeader("accept", "application/json, text/plain, */*")
+    			.addHeader("accept-language", "en-US,en;q=0.9")
+    			.addHeader("content-type", "application/json")
+    			.addHeader("hubidentifier", "newhub926737103395")
+    			.addHeader("origin", "https://test-standardautomation-hub.pg-test.com")
+    			.addHeader("referer", "https://test-standardautomation-hub.pg-test.com/hub/newhub926737103395/auth/create-account")
+    			.addFilter(RequestLoggingFilter.logRequestTo(log))
+                .addFilter(ResponseLoggingFilter.logResponseTo(log))
+                .setContentType(ContentType.JSON).build();
+    	return req;
+    }
+    
     public RequestSpecification pgUsersAPIRequestSpec(String token) throws IOException {
     	PrintStream log = new PrintStream(new FileOutputStream("api-logs//pgSelectUserType.txt"));
     	req = new RequestSpecBuilder().setBaseUri(getGlobalProperties("pgBaseUrl"))
