@@ -8,6 +8,7 @@ import api.automation.utils.GenericMethods;
 import api.automation.utils.TestContextSetup;
 import api.automation.utils.TestDataBuilder;
 import api.automation.utils.Utility;
+import api.pg.pojo.landingpage.LandingPageTemplate;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -46,6 +47,12 @@ public class StepDefinitions extends Utility{
             String pathURL = resourceAPI.getResource();
             System.out.println("Resource URL: "+pathURL);
             testContextSetup.response = res.when().get(pathURL);
+        }else if(resource.equals("PgLandingPage")) {
+        	APIResources resourceAPI = APIResources.valueOf(resource);
+            String pathURL = resourceAPI.getResource();
+            System.out.println("Resource URL: "+pathURL);
+            testContextSetup.response = res.when().get(pathURL);
+            System.out.println(testContextSetup.response.asPrettyString());
         }
     }
 
@@ -89,11 +96,6 @@ public class StepDefinitions extends Utility{
     @Given("Login API with {string} and {string}")
     public void login_api_with_and(String email, String password) throws IOException {
         res = given().spec(loginUserRequestSpecification(email, password));
-    }
-
-    @Then("verify if login is successful and token {string} is returned")
-    public void verify_if_login_is_successful_and_token_is_returned(String string) {
-        
     }
     
     @Given("Create User API with {string} and {string}")
@@ -151,6 +153,16 @@ public class StepDefinitions extends Utility{
     @When("extract token from pg signup response")
     public void extract_token_from_pg_signup_response() {
     	testContextSetup.token = testContextSetup.response.getBody().jsonPath().get("token");
+    }
+    
+    @Given("Landing page settings api with version {string}")
+    public void landing_page_settings_api_with_version(String version) throws IOException {
+        res = given().spec(pgLandingPageTemplate(version));
+    }
+
+    @Then("verify the response of landing page template api")
+    public void verify_the_response_of_landing_page_template_api() {
+        LandingPageTemplate landingPageTemplate = testContextSetup.response.getBody().as(LandingPageTemplate.class);
     }
 
 }

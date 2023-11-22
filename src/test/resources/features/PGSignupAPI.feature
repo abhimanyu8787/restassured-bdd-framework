@@ -16,3 +16,11 @@ Scenario: Verify get landing page template api
 	When user calls "PgLandingPage" API with GET http request
   Then verify if API returns with status code 200
   And verify the response of landing page template api
+  
+Scenario: Verify bottom banner section on landing page using API
+	Given Signin as 'cluster admin' on pg standard
+	Then verify if API returns with status code 200
+	When extract token from pg signup response
+	And modify 'bottom banner' settings in landing page template payload
+	When user calls "PgLandingPageSettings" with Put Http Request
+	Then verify if API returns with status code 200

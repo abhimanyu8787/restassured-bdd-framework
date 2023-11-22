@@ -121,6 +121,19 @@ public class Utility {
     	return req;
     }
     
+    public RequestSpecification pgLandingPageTemplate(String version) throws IOException {
+    	PrintStream log = new PrintStream(new FileOutputStream("api-logs//pgLandingPageTemplate.txt"));
+    	req = new RequestSpecBuilder().setBaseUri(getGlobalProperties("pgBaseUrl"))
+    			.addHeader("accept", "application/json, text/plain, */*")
+    			.addHeader("accept-language", "en-US,en;q=0.9")
+    			.addHeader("Accept-Encoding", "gzip, deflate, br")
+    			.addParam("version", version)
+    			.addFilter(RequestLoggingFilter.logRequestTo(log))
+                .addFilter(ResponseLoggingFilter.logResponseTo(log))
+                .setContentType(ContentType.JSON).build();
+    	return req;
+    }
+    
     public String getUniqueEmailId() {
 		DateTimeFormatter day = DateTimeFormatter.ofPattern("ddMMMHHmmss", Locale.US);
 		DateTimeFormatter time = DateTimeFormatter.ofPattern("HHmmss");
