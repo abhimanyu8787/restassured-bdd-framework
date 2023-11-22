@@ -17,7 +17,7 @@ Scenario: Verify get landing page template api
   Then verify if API returns with status code 200
   And verify the response of landing page template api
 
-@pglandingpage @trial
+@pglandingpage
 Scenario: Verify bottom banner section on landing page using API
 	Given Signin as 'cluster admin' on pg standard
 	When user calls "PgSigninAPI" with Post Http Request

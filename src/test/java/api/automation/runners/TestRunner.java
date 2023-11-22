@@ -11,7 +11,7 @@ import io.cucumber.junit.CucumberOptions;
                 "json:target/jsonReports/cucumber-report.json",
                 "html:target/htmlReports/cucumber-report.html",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}, monochrome = true, 
-        glue = {"api.automation.stepdefinitions" }, tags = "@trial")
+        glue = {"api.automation.stepdefinitions" }, tags = "@pglandingpage")
 public class TestRunner {
 
 }
