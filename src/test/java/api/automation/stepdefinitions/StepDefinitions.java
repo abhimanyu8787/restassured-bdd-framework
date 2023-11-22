@@ -78,7 +78,12 @@ public class StepDefinitions extends Utility{
             APIResources resourceAPI = APIResources.valueOf(resource);
             String pathURL = resourceAPI.getResource();
             testContextSetup.response = res.when().post(pathURL);
+        }else if(resource.equals("PgSignupAPI")) {
+        	APIResources resourceAPI = APIResources.valueOf(resource);
+            String pathURL = resourceAPI.getResource();
+            testContextSetup.response = res.when().post(pathURL);
         }
+        System.out.println(testContextSetup.response.asPrettyString());
     }
     
     @Given("Login API with {string} and {string}")
@@ -94,6 +99,58 @@ public class StepDefinitions extends Utility{
     @Given("Create User API with {string} and {string}")
     public void create_user_api_with_and(String name, String job) throws IOException {
         res = given().spec(createUserRequestSpecification(name,job));
+    }
+    
+    @Given("I signup via api as {string} usertype")
+    public void i_signup_via_api_as_usertype(String string) throws IOException {
+    	testContextSetup.response = given().spec(pgSignupAPIRequestSpec())
+        		.body(testDataBuilder.signupRequestPayload("abhimanyuRestAssured5@peoplegrove.com", "Testing@123", true, 1, "Abhimanyu Rest Assured", "Kumar", "create account page"))
+        		.when().post("/api/auth/signup");
+    	int responseCode = testContextSetup.response.getStatusCode();
+    	System.out.println(testContextSetup.response.asString());
+    	String token = testContextSetup.response.getBody().jsonPath().get("token");
+    	
+    	Response response2 = given().spec(pgSignupAPIRequestSpec())
+    			.header("authorization", "bearer "+token)
+    			.body(testDataBuilder.selectUsertypePayload(1247, "true", "SELECT_TYPE", "false", "alumni"))
+    			.when().put("/api/users");
+    	
+    	int status = response2.getStatusCode();
+    	System.out.println(response2.asString());
+    }
+
+    @When("I complete the signup process for {string} usertype")
+    public void i_complete_the_signup_process_for_usertype(String string) {
+        
+    }
+    
+    @Given("Signup via Email with {string} usertype")
+    public void signup_via_email_with_usertype(String string) throws IOException {
+    	String email = getUniqueEmailId();
+		String fname = "SignupF " + getUniqueNumericString();
+		String lname = "SignupL " + getUniqueNumericString();
+		String pwd = "Testing@123";
+    	res = given().spec(pgSignupAPIRequestSpec())
+        		.body(testDataBuilder.signupRequestPayload(email, pwd, true, 1, fname, lname, "create account page"));
+    }
+
+    @When("user calls {string} with Put Http Request")
+    public void user_calls_with_put_http_request(String resource) throws Exception {
+    	switch (resource.toUpperCase()) {
+		case "PGSIGNUPAPI":
+			APIResources resourceAPI = APIResources.valueOf(resource);
+            String pathURL = resourceAPI.getResource();
+            testContextSetup.response = res.when().put(pathURL);
+			break;
+
+		default:
+			throw new Exception("Unsupported request name provided");
+		}
+    }
+    
+    @When("extract token from pg signup response")
+    public void extract_token_from_pg_signup_response() {
+    	testContextSetup.token = testContextSetup.response.getBody().jsonPath().get("token");
     }
 
 }

@@ -8,6 +8,7 @@ public class TestContextSetup {
     public Response response;
     public JsonPath responseJsonObject;
     public GenericMethods genericMethods;
+    public String token;
     
     public TestContextSetup() throws Exception{
         genericMethods = new GenericMethods();

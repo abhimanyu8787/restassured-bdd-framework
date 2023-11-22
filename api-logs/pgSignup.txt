@@ -1,0 +1,54 @@
+Request method:	POST
+Request URI:	https://test-standardautomation-hub.pg-test.com/api/auth/signup
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		authority=test-standardautomation-hub.pg-test.com
+				accept=application/json, text/plain, */*
+				accept-language=en-US,en;q=0.9
+				hubidentifier=newhub926737103395
+				origin=https://test-standardautomation-hub.pg-test.com
+				referer=https://test-standardautomation-hub.pg-test.com/hub/newhub926737103395/auth/create-account
+				Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "email": "test+22Nov042633mrg@epxlvj6o.mailosaur.net",
+    "password": "Testing@123",
+    "agreementAccepted": true,
+    "method": 1,
+    "firstName": "SignupF 221133",
+    "lastName": "SignupL 221133",
+    "source": "create account page"
+}
+HTTP/1.1 200 OK
+Date: Tue, 21 Nov 2023 22:56:37 GMT
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+CF-Ray: 829c86ddd9c32afd-DEL
+CF-Cache-Status: DYNAMIC
+Cache-Control: no-cache, no-store, must-revalidate
+ETag: W/"1f9-KBIpqa0M/0DjhNeHcC1FXh0ajK4"
+Expires: Tue, 31 Mar 1981 05:00:00 GMT
+Last-Modified: Tue, 21 Nov 2023 22:56:35 GMT
+Set-Cookie: refreshToken=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoyOTE5ODU4OSwiY2x1c3RlciI6MTA1MiwiaXNzdWVkQXQiOiIyMDIzLTExLTIxVDIyOjU2OjM3LjIxMFoiLCJleHBpcmVzQXQiOiIyMDI0LTAyLTE5VDIyOjU2OjM3LjIxMFoiLCJ0b2tlblV1aWQiOiI3YjA2YTA1Zi1lOTM1LTQ0MDctYjRmNS1kZjc4N2E5YmQ1MjIifQ.e7br2WBAzCnHcen1Lu8OcYo-MlXjdrAP3lWy8YQcfjE; Path=/api/auth/token/; Expires=Mon, 19 Feb 2024 22:56:37 GMT; HttpOnly; Secure; SameSite=Strict
+Vary: Accept-Encoding
+Via: 1.1 google
+Pragma: no-cache
+Set-Cookie: sails.sid=s%3A_WlQlJD5u_v7VmyaDG1_KjFCGF_kC4An.kDCOuleQW69xLR%2FkLW18Af2udjJe5%2BygSeSXMoybOS4; Path=/; HttpOnly
+X-Content-Type-Options: nosniff
+x-response-origin: pg
+Server: cloudflare
+Content-Encoding: gzip
+
+{
+    "id": 29198589,
+    "photoUrl": "https://s3.amazonaws.com/campuskudos-images/generic_avatar.jpg",
+    "identifier": "signupf221133signupl221133",
+    "signupStage": "SELECT_TYPE",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoyOTE5ODU4OSwiY2x1c3RlciI6MTA1MiwidmVyc2lvbiI6MSwiaXNzdWVkQXQiOiIyMDIzLTExLTIxVDIyOjU2OjM3LjIwOFoiLCJleHBpcmVzQXQiOiIyMDIzLTExLTIxVDIzOjI2OjM3LjIwOFoiLCJ0b2tlblV1aWQiOiJjNzg4NTdmZC01ZmQxLTRkZDctYTBlYi1hNmU4YzBhMmI0NjIiLCJzY29wZSI6WyJhdXRoIl19.vDttghT_flZZ0-wZZqUZOE5vRLgO4ZZDIhq_mO0XcOc"
+}
